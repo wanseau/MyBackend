@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-vvsy!n%)+9iit&ms$addc01r%qx%z!+r=o_%!2o6x3c3r*)6-e
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['peitel-backend-lhqe.onrender.com']
+ALLOWED_HOSTS = ['https://peitel-backend-lhqe.onrender.com', 'peitel-backend-lhqe.onrender.com']
 
 
 # Application definition
@@ -57,7 +57,7 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 ROOT_URLCONF = 'MyProject.urls'
 CSRF_TRUSTED_ORIGINS = [
-    "https://peitelbackend.onrender.com" 
+    "https://peitelbackend.onrender.com", "peitel-backend-lhqe.onrender.com" 
 ]
 
 TEMPLATES = [
