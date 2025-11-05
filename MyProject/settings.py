@@ -56,9 +56,6 @@ MIDDLEWARE = [
 CORS_ALLOW_ALL_ORIGINS = True 
 
 ROOT_URLCONF = 'MyProject.urls'
-CSRF_TRUSTED_ORIGINS = [
-    "https://peitelbackend.onrender.com", "peitel-backend-lhqe.onrender.com" 
-]
 
 TEMPLATES = [
     {
@@ -129,3 +126,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://peitel-backend-lhqe.onrender.com"
+]
