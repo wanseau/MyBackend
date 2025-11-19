@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Homepage — User Registration Demo</title>
+  <style>
+    body { 
+        font-family: 'Courier New', Courier, monospace; 
+        background: #ffdf5d;
+        text-align: center; 
+        padding: 50px; 
+        color: #000;
+    }
+    .btn { 
+        display: inline-block;
+        padding: 16px 32px; 
+        background: #ff6b6b;
+        color: white; 
+        border-radius: 0px;
+        text-decoration: none; 
+        border: 3px solid #000;
+        box-shadow: 8px 8px 0px #000;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.1s;
+    }
+    
+    .btn:hover {
+        background: #ff4757;
+        transform: translate(-2px, -2px);
+        box-shadow: 10px 10px 0px #000;
+    }
+    .btn:active {
+        transform: translate(4px, 4px);
+        box-shadow: 4px 4px 0px #000;
+    }
+</style>
+</head>
+<body>
+  <h1>Welcome to the User Registration Demo</h1>
+  <p></p>
+  <a href="{% url 'registration:login_page' %}" class="btn">Go to Login</a>
+</body>
+</html>

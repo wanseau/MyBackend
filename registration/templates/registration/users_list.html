@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Users List</title>
+  <style>
+    body { 
+        font-family: 'Courier New', Courier, monospace; 
+        padding: 24px; 
+        background: #ffdf5d; 
+        color: #000;
+    }
+    .top { 
+        display: flex; 
+        justify-content: space-between; 
+        align-items: center; 
+        margin-bottom: 24px; 
+        border-bottom: 3px solid #000; 
+        padding-bottom: 24px;
+    }
+    table { 
+        width: 100%; 
+        border-collapse: separate; 
+        border-spacing: 0;
+        background: white; 
+        border-radius: 0px; 
+        overflow: visible; 
+        border: 3px solid #000; 
+        box-shadow: 8px 8px 0px #000; 
+    }
+    th, td { 
+        padding: 16px; 
+        text-align: left; 
+        border-bottom: 2px solid #000; 
+        border-right: 2px solid #000; 
+    }
+    
+    th:last-child, td:last-child {
+        border-right: none;
+    }
+    th { 
+        background: #000; 
+        color: #fff; 
+        font-weight: 900; 
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    tr:hover td { 
+        background: #d4f1f4; 
+        color: #000;
+    }
+    a.button { 
+        padding: 12px 20px; 
+        background: #ff6b6b; 
+        color: white; 
+        border-radius: 0px; 
+        text-decoration: none; 
+        border: 2px solid #000;
+        font-weight: 800;
+        box-shadow: 4px 4px 0px #000; 
+        text-transform: uppercase;
+        transition: all 0.1s;
+        display: inline-block;
+    }
+    a.button:hover {
+        background: #ff4757;
+    }
+    a.button:active {
+        transform: translate(2px, 2px);
+        box-shadow: 2px 2px 0px #000;
+    }
+</style>
+</head>
+<body>
+  <div class="top">
+    <h1 style="margin:0;">All Users</h1>
+    <div>
+      Logged in as <strong>{{ current_user }}</strong>
+      <a href="{% url 'registration:logout_html' %}" class="button" style="margin-left:10px;">Logout</a>
+    </div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Email</th>
+        <th>Gender</th>
+        <th>Date registered</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for u in users %}
+      <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ u.first_name }}</td>
+        <td>{{ u.last_name }}</td>
+        <td>{{ u.email }}</td>
+        <td>{{ u.gender|default:"N/A" }}</td>
+        <td>{{ u.date_registered|date:"Y-m-d H:i" }}</td>
+      </tr>
+      {% empty %}
+      <tr><td colspan="6">No users yet.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</body>
+</html>

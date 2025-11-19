@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Login</title>
+  <style>
+    body { 
+        font-family: 'Courier New', Courier, monospace;
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        height: 100vh; 
+        background: #ffdf5d;
+        color: #000;
+    }
+    .card { 
+        background: white; 
+        padding: 30px; 
+        border-radius: 0px;
+        border: 3px solid #000;
+        box-shadow: 8px 8px 0px #000;
+        width: 320px; 
+    }
+    .field { 
+        margin-bottom: 15px; 
+    }
+    label { 
+        display: block; 
+        font-weight: 900;
+        margin-bottom: 6px; 
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        letter-spacing: 1px;
+    }
+    input[type="text"], input[type="password"] { 
+        width: 100%; 
+        padding: 12px 10px; 
+        border: 2px solid #000; 
+        border-radius: 0px;
+        background: #f4f4f4;
+        font-family: inherit;
+        box-sizing: border-box;
+        transition: all 0.1s ease;
+    }
+    
+    input[type="text"]:focus, input[type="password"]:focus {
+        outline: none;
+        background: #fff;
+        box-shadow: 4px 4px 0px #000; 
+        transform: translate(-2px, -2px);
+    }
+    button { 
+        width: 100%; 
+        padding: 14px; 
+        border: 2px solid #000; 
+        border-radius: 0px; 
+        background: #ff6b6b;
+        color: white; 
+        font-weight: 800; 
+        text-transform: uppercase;
+        box-shadow: 4px 4px 0px #000;
+        cursor: pointer;
+        transition: all 0.1s;
+    }
+    button:active {
+        transform: translate(2px, 2px);
+        box-shadow: 2px 2px 0px #000;
+    }
+    .error { 
+        color: #000; 
+        background-color: #ffadad;
+        border: 1px solid #000;
+        padding: 8px;
+        margin-bottom: 15px; 
+        font-weight: bold;
+        text-align: center;
+        font-size: 0.85rem;
+    }
+    a { 
+        text-decoration: underline; 
+        text-decoration-thickness: 2px;
+        color: #000; 
+        font-weight: 700;
+        display: block;
+        text-align: center;
+    }
+    a:hover {
+        background: #000;
+        color: #fff;
+    }
+</style>
+</head>
+<body>
+  <div class="card">
+    <h2>Sign in</h2>
+
+    {% if messages %}
+      {% for msg in messages %}
+        <div class="error">{{ msg }}</div>
+      {% endfor %}
+    {% endif %}
+
+    <form method="post">
+      {% csrf_token %}
+      <div class="field">
+        <label>Email</label>
+        <input name="email" type="text" value="{{ email|default:'' }}" required>
+      </div>
+
+      <div class="field">
+        <label>Password</label>
+        <input name="password" type="password" required>
+      </div>
+
+      <button type="submit">Login</button>
+    </form>
+
+    <p style="margin-top:10px; text-align:center;">
+      <a href="{% url 'home_page' %}">Back to homepage</a>
+    </p>
+  </div>
+</body>
+</html>
